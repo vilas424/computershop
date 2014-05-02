@@ -1,0 +1,37 @@
+<html>
+<body>
+<?php
+	echo " asdsad"; 
+	$ram = $_GET['ram'];
+	$range = $_GET['Range'];
+	$processor = $_GET['processor'];
+	$hdd = $_GET['hdd'];
+	
+	
+	echo "Ram".$ram." ";
+	echo "Range".$range;
+	echo "Processor".$processor;
+	echo "HDD".$hdd;
+	
+	
+	$server = "localhost";
+	$login = "root";
+	$password = "";
+	$link = mysql_connect($server, $login, $password);
+	if (!$link) {
+		die("\n<BR>Could not connect $server:" .  mysql_error());
+	}
+	$db_selected = mysql_select_db("wt");
+	if (!$db_selected) {
+		die ("\n<BR>Can\'t use Table : $db_selected" . 	mysql_error());
+	}
+	$result=mysql_query("SELECT *  FROM laptop");
+    While($row=mysql_fetch_assoc($result))
+	{
+            Echo "name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row['Lname']."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row['Lcompany']."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row['Lprocessor']."<br>";
+            $ii=$row['img_path'];
+           Echo "<img src='$ii' width='100' height='100'>";
+	}
+?>
+</body>
+</html>
